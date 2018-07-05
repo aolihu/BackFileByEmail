@@ -5,6 +5,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText 
 from email.mime.image import MIMEImage 
 
+
+if __name__ == '__main__':
 #SMTP server with username and password
 smtpserver = '*' 
 username = '*' 
@@ -15,17 +17,17 @@ sender = '*'
 receiver = '*' 
 subject = '*' 
 
-
-# Email subject 
+#Email subject 
 msgRoot = MIMEMultipart('related') 
 msgRoot['Subject'] = subject
- 
-#add attachment
+
+#Add attachment
 att = MIMEText(open('C:\\*', 'rb').read(), 'base64', 'utf-8') 
 att["Content-Type"] = 'application/octet-stream' 
 att["Content-Disposition"] = 'attachment; filename="*.*"' 
 msgRoot.attach(att) 
-     
+
+#Send email     
 smtp = smtplib.SMTP() 
 smtp.connect(smtpserver) 
 smtp.login(username, password) 
